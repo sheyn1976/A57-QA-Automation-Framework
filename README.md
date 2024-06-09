@@ -17,11 +17,3 @@ If you have any questions or need further assistance, feel free to contact the c
 <<<<<<< Updated upstream
 
 >>>>>>> Stashed changes
-hello world!
-> 
-> ura1
-> 
-> class57!
-> asdds
-> eeeeee
-> 
