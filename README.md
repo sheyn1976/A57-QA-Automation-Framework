@@ -14,4 +14,12 @@ For more detailed instructions regarding the installation of the framework, plea
 
 <h2>Contact Information</h2>
 If you have any questions or need further assistance, feel free to contact the course instructor, our support team or send a message in Teams for A57.  
-dream1
+<<<<<<< Updated upstream
+
+>>>>>>> Stashed changes
+hello world!
+> 
+> ura1
+> 
+> class57!
+> 
