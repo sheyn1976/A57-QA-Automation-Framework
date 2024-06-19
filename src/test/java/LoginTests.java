@@ -25,13 +25,12 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
 }
+/*
 public class Homework16 extends BaseTest {
-    @Test
-            rationLink.click();
 
-    String registrationUrl="https://qa.koel.app/registration";
-        Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
-        driver.quit(); public void registrationNavigation() {
+    @Test
+
+    public void registrationNavigation() {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -43,7 +42,10 @@ public class Homework16 extends BaseTest {
         driver.get(url);
 
         WebElement registrationLink = driver.findElement(By.cssSelector("[href=registration]"));
-        regist
-    }
-}
+             registrationLink.click();
+
+             String registrationUrl="https://qa.koel.app/registration";
+             Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
+             driver.quit();
+             */
 
