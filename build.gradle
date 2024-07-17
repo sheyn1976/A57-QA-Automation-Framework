@@ -17,6 +17,20 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        suites "src/test/resources/Smoke.xml"
     }
 }
+/*
+
+test {
+    useSmoke() {
+        suites "src/test/resources/Smoke.xml"
+    }
+}
+test {
+    useRegression() {
+        suites "src/test/resources/Regression.xml"
+    }
+}
+*/
+
