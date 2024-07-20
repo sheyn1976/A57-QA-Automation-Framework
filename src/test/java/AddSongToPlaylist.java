@@ -1,48 +1,76 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+public class AddSongToPlaylist extends BaseTest {
 
-public class AddSongToPlaylist extends BaseTest{
+
     @Test
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        String expectedSongAddedMassage = "Added 1 song into \"Ilya Playlist.\"";
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        navigateToPage();
+        enterEmail("ilya.sheynblat+1@testpro.io");
+        enterPassword("$Ma1947va");
+        clickSubmit();
+        Thread.sleep(5000);
+        searchSong("Dark Days");
+        clickViewAllBtn();
+        selectFirstSongResult();
+        clickAddBtn();
+        choosePlayList();
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+        Assert.assertEquals(getAddToPlayListSuccessMsg(), expectedSongAddedMassage);
+    }
+
+    public void searchSong(String name) throws InterruptedException {
+        WebElement searchField = getDriver().findElement(By.cssSelector("input[type='search']"));
+        searchField.sendKeys(name);
+        Thread.sleep(2000);
+    }
+
+    public void clickViewAllBtn() throws InterruptedException {
+        WebElement viewAll = getDriver().findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+        viewAll.click();
+        Thread.sleep(2000);
+
+    }
+
+    public void selectFirstSongResult() throws InterruptedException {
+        WebElement firstSong = getDriver().findElement(By.xpath("//section[@id='songsWrapper']//tr[@class='song-item'][1]"));
+        firstSong.click();
+        Thread.sleep(2000);
+    }
 
 
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.sendKeys("ilya.sheynblat+1@testpro.io");
 
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.sendKeys("$Ma1947va");
-
-        WebElement loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
-        loginButton.click();
-
-        WebElement logoutButton = driver.findElement(By.cssSelector("a[data-testid='btn-logout']"));
-        logoutButton.click();
-
-        String registrationUrl="https://qa.koel.app/registration";
-        Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
-
-        driver.quit();
+    public void clickAddBtn() throws InterruptedException {
+        WebElement addToButton = getDriver().findElement(By.xpath("//section[@id='recentlyPlayedWrapper']//button[@class='btn-add-to']"));
+        addToButton.click();
+        Thread.sleep(2000);
+    }
 
 
+
+    public void choosePlayList() throws InterruptedException {
+        WebElement playList = getDriver().findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'Ilya playlist')]"));
+        playList.click();
+        Thread.sleep(2000);
+
+    }
+    public String getAddToPlayListSuccessMsg(){
+        WebElement notification=getDriver().findElement(By.cssSelector("div.success.show"));
+        return notification.getText();
 
     }
 }
+
+
+
+
+
 
 
 
