@@ -4,7 +4,7 @@
 <suite name="Smoke">
    <test name="Smoke Test" preserve-order="false">
     <classes>
-        <class name="RenameUserProfileTest"></class>
+        <class name="RenameUserProfileTest"/>
         <class name="LoginTests">
         <methods>
         <include name="loginUserTest"/>
