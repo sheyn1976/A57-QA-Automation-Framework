@@ -12,8 +12,18 @@ public class Homework18 extends BaseTest {
     clickPlay();
         Assert.assertTrue(isSongPlaying());
     }
-    public void clickLoginButton(){
-        WebElement playNextButton = driver.findElement(By.cssSelector());
+    public void clickPlay(){
+        WebElement playNextButton = getDriver().findElement(By.cssSelector("i[data-testid='play-next-btn']"));
+        WebElement playButton = getDriver().findElement(By.cssSelector("span.play"));
+
+        playNextButton.click();
+        playButton.click();
+    }
+
+    public boolean isSongPlaying(){
+        WebElement soundBar= getDriver().findElement(By.cssSelector("div.bars"));
+        return soundBar.isDisplayed();
+
     }
 
 }
