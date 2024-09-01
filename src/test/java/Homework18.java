@@ -5,19 +5,21 @@ import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
     @Test
-            public void playSong(){
+            public void playSong() throws InterruptedException{
     enterEmail("ilya.sheynblat+1@testpro.io");
     enterPassword("$Ma1947va");
     clickLoginButton();
     clickPlay();
         Assert.assertTrue(isSongPlaying());
     }
-    public void clickPlay(){
+    public void clickPlay() throws InterruptedException {
         WebElement playNextButton = getDriver().findElement(By.cssSelector("i[data-testid='play-next-btn']"));
         WebElement playButton = getDriver().findElement(By.cssSelector("span.play"));
 
         playNextButton.click();
+        Thread.sleep(2000);
         playButton.click();
+        Thread.sleep(2000);
     }
 
     public boolean isSongPlaying(){
