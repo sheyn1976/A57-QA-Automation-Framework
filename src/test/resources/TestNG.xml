@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG" thread-count="2" parallel="false">
-    <parameter name="baseUrl" value="http://demo.koel.dev"></parameter>
-    <test name="baseUrl" preserve-order="false">
+<suite name="TestNG">
+
+    <test name="Example Test" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
-            <class name="BaseTest"/>
+            <!--<class name="BaseTest"/>-->
             <!-- <class name="AddSongToPlaylist"/> -->
-            <class name="RenameUserProfileTest"/>
-        </classes>
-      </test>
-  </suite>
+             <class name="RenameUserProfileTest"/>
+            <class name="Homework18"/>
+         </classes>
+     </test>
+ </suite>

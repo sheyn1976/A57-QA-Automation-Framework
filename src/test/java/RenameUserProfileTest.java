@@ -15,11 +15,11 @@ public class RenameUserProfileTest extends BaseTest{
 
     public void renameUserProfileTest() throws InterruptedException{
         String newName= UUID.randomUUID().toString();
-loginKoel("ilya.sheynblat+1@testpro.io","$Ma1947va");
 
-//enterEmail("ilya.sheynblat+1@testpro.io");
-//enterPassword("$Ma1947va");
-//clickLoginButton();
+
+enterEmail("ilya.sheynblat+1@testpro.io");
+enterPassword("$Ma1947va");
+clickLoginButton();
 
         Thread.sleep(5000);
 
@@ -37,7 +37,7 @@ loginKoel("ilya.sheynblat+1@testpro.io","$Ma1947va");
         WebElement submitButton= getDriver().findElement(By.cssSelector(".btn-submit"));
         submitButton.click();
 
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         Assert.assertEquals(profileNameField.getText(),newName);
     }
