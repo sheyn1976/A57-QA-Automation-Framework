@@ -1,36 +1,66 @@
+import io.netty.util.internal.StringUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.UUID;
 
 public class LoginTests extends BaseTest {
 
-    @Test(testName = " Login with empty email and password test ", groups = "Regresion")
-    public void loginEmptyEmailPasswordTest() {
-
-//      Added ChromeOptions argument below to fix websocket error
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+    @Test(dataProviderClass = ParameterProvider.class, dataProvider = "IncorrectCredentialsValues", testName = " Login with empty email and password test ", groups = "Regresion")
+    @Parameters()
+    public void loginIncorrectEmailPasswordTest(String email, String password) throws InterruptedException {
+//empty string"" StringUtil.EMPTY_STRING
+        loginKoel(email, password);
+        Thread.sleep(3000);
+        Assert.assertTrue(getDriver().findElement(By.cssSelector("button[type='submit']")).isDisplayed());
 
     }
-    @Test(testName ="Login with correct credentials test", groups = {"Smoke","Regretion"})
-    public void loginUserTest(){
-        enterEmail("ilya.sheynblat+1@testpro.io");
-        enterPassword("$Ma1947va");
-        clickLoginButton();
 
+    @Test(testName = "Login with correct credentials test", groups = {"Smoke", "Regretion"})
+    public void loginUserTest() {
+
+        loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         WebElement logoutButton = getDriver().findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
-
-
+        System.out.println(logoutButton.toString());
         Assert.assertTrue(logoutButton.isDisplayed());
+    }
 
+    @DataProvider(name = "IncorrectCredentialValues")
+    public Object[][] provideIncorrectCredentials() {
+        return new Object[][]{
+                {"", ""},
+                {"ilya.sheynblat+1@testpro.io", "$afddv33wrong"},
+                {"insert into table...", "insert into table..."},
+               {UUID.randomUUID().toString(), UUID.randomUUID().toString(),}
+        };
     }
 }
+/*
+@DataProvider(name = "IncorrectCredentialValues")
+public Object[][] ProvideIncorrectCredentials() {
+    return new Object[][]{
+            {"",""},
+            {"ilya.sheynblat+1@testpro.io","$afddv33wrong"},
+           // {"insert into table...","insert into table..."},
+            {UUID.randomUUID().toString(),UUID.randomUUID().toString(),}
+    };
+
+}
+}
+
+
+
+
+
+
 /*
 public class Homework16 extends BaseTest {
 
