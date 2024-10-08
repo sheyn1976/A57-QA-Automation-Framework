@@ -17,12 +17,10 @@ public class BaseTest {
   protected   String url = "https://qa.koel.app/";
 
     @BeforeSuite
-
     static void setupClass() {
-        WebDriverManager.chromedriver().setup();}
-
-
-@BeforeMethod
+        WebDriverManager.chromedriver().setup();
+    }
+    @BeforeMethod
 @Parameters({"baseUrl"})
     public void  setupDriver(String baseUrl) {
 
@@ -65,6 +63,7 @@ public class BaseTest {
   }
   @Override
     public String toString(){
+
         return "This is base test class";
   }
     }

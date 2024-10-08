@@ -14,12 +14,12 @@ import java.util.UUID;
 
 public class LoginTests extends BaseTest {
 
-    @Test(dataProviderClass = ParameterProvider.class, dataProvider = "IncorrectCredentialsValues", testName = " Login with empty email and password test ", groups = "Regresion")
-    @Parameters()
+    @Test(dataProviderClass = ParameterProvider.class, dataProvider ="incorrectCredentialVlues" , testName = " Login with empty email and password test ", groups = "Regresion")
+    //@Parameters()
     public void loginIncorrectEmailPasswordTest(String email, String password) throws InterruptedException {
 //empty string"" StringUtil.EMPTY_STRING
-        loginKoel(email, password);
-        Thread.sleep(3000);
+        loginKoel(email,  password);
+        Thread.sleep(5000);
         Assert.assertTrue(getDriver().findElement(By.cssSelector("button[type='submit']")).isDisplayed());
 
     }
@@ -29,7 +29,7 @@ public class LoginTests extends BaseTest {
 
         loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         WebElement logoutButton = getDriver().findElement(By.cssSelector("a[data-testid='btn-logout']>i"));
-        System.out.println(logoutButton.toString());
+        System.out.println(new BaseTest().toString());
         Assert.assertTrue(logoutButton.isDisplayed());
     }
 
@@ -37,9 +37,10 @@ public class LoginTests extends BaseTest {
     public Object[][] provideIncorrectCredentials() {
         return new Object[][]{
                 {"", ""},
-                {"ilya.sheynblat+1@testpro.io", "$afddv33wrong"},
-                {"insert into table...", "insert into table..."},
-               {UUID.randomUUID().toString(), UUID.randomUUID().toString(),}
+                {"i@testpro.io", "$33wrong"},
+              {"insert into table...", "insert into table..."},
+             {UUID.randomUUID().toString(),UUID.randomUUID().toString()}
+            //  {"ilya.sheynblat+1@testpro.io","$Ma1947va"}
         };
     }
 }

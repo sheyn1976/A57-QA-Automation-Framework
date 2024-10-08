@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG" thread-count="2" parallel="false">
-    <parameter name="baseUrl" value="http://demo.koel.dev"></parameter>
+    <parameter name="baseUrl" value="http://qa.koel.app"></parameter>
     <test name="baseUrl" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
@@ -11,4 +11,4 @@
             <class name="RenameUserProfileTest"/>
         </classes>
       </test>
-  </suite>
+</suite>
