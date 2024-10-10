@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.bouncycastle.oer.its.etsi102941.Url;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,20 +22,25 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
     @BeforeMethod
-@Parameters({"baseUrl"})
-    public void  setupDriver(String baseUrl) {
+@Parameters({"baseURL"})
+    public void  setupDriver(String baseURL) {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl); //open our page here
-
+        driver.get(baseURL); //open our page here
+        navigateToPage();
     }
             public WebDriver getDriver() {
             return driver;
         }
+
+       public void navigateToPage(){
+        driver.get(url);
+       }
+
 
 @AfterMethod
     public   void closerDriver() {
@@ -54,7 +60,7 @@ public class BaseTest {
   public void clickLoginButton(){
       WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
       loginButton.click();
-  }
+    }
   public void loginKoel(String email,String password){
         enterEmail(email);
         enterPassword(password);
