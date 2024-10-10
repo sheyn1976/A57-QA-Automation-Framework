@@ -2,13 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG" thread-count="2" parallel="false">
-    <parameter name="baseUrl" value="http://qa.koel.app"></parameter>
+    <parameter name="baseURL" value="http://qa.koel.app"/>
     <test name="baseUrl" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
+            <!--<class name="LoginTests"/>-->
             <class name="BaseTest"/>
+            <class name="Homework19"/>
             <!-- <class name="AddSongToPlaylist"/> -->
-            <class name="RenameUserProfileTest"/>
+            <!--<class name="RenameUserProfileTest"/>-->
         </classes>
       </test>
 </suite>
