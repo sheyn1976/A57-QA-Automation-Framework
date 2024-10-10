@@ -22,8 +22,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
     @BeforeMethod
-@Parameters({"baseUrl"})
-    public void  setupDriver(String baseUrl) {
+@Parameters({"baseURL"})
+    public void  setupDriver(String baseURL) {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
