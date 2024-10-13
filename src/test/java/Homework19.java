@@ -11,14 +11,14 @@ public class Homework19 extends BaseTest {
         enterEmail("ilya.sheynblat+1@testpro.io");
         enterPassword("$Ma1947va");
         clickLoginButton();
-        openPlaylist();
+        openPlaylist ();
         clickDeletePlaylistBtn();
         Assert.assertEquals( getDeletedPlaylistMsg(), expectedPlaylistDeletedMassage);
     }
 
 
 public  void openPlaylist() {
-    WebElement emptyPlaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
+    WebElement emptyPlaylist = driver.findElement(By.cssSelector("//*[@class='playlist playlist']//*[text()=']"));
     emptyPlaylist.click();
 }
 
@@ -29,7 +29,8 @@ Thread.sleep(2000);
 }
 
 public String getDeletedPlaylistMsg() {
-WebElement notificationMsg = driver.findElement(By.cssSelector("div[class='alertify-logs top right']"));
+    WebElement notificationMsg = driver.findElement(By.cssSelector("//*[@class='dialog']//*[@class='msg']"));
+
 return notificationMsg.getText();
 
 }
