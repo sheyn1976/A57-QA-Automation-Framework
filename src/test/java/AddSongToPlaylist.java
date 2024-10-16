@@ -23,20 +23,20 @@ public class AddSongToPlaylist extends BaseTest{
 
 */
 
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        WebElement emailField = getDriver().findElement(By.cssSelector("input[type='email']"));
         emailField.sendKeys("ilya.sheynblat+1@testpro.io");
 
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        WebElement passwordField = getDriver().findElement(By.cssSelector("input[type='password']"));
         passwordField.sendKeys("$Ma1947va");
 
-        WebElement loginButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement loginButton = getDriver().findElement(By.cssSelector("button[type='submit']"));
         loginButton.click();
 
        // WebElement logoutButton = driver.findElement(By.cssSelector("a[data-testid='btn-logout']"));
        // logoutButton.click();
 
         String registrationUrl="https://qa.koel.app/registration";
-        Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
+        Assert.assertEquals(getDriver().getCurrentUrl(), registrationUrl);
 
      //   driver.quit();
 

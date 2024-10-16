@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -14,12 +16,15 @@ import java.util.UUID;
 
 public class LoginTests extends BaseTest {
 
-    @Test(dataProviderClass = ParameterProvider.class, dataProvider ="incorrectCredentialVlues" , testName = " Login with empty email and password test ", groups = "Regresion")
-    //@Parameters()
-    public void loginIncorrectEmailPasswordTest(String email, String password) throws InterruptedException {
+    @Test(testName = " Login with empty email and password test ", groups = "Smoke")
+    public void loginNegativeEmailPasswordTest(String email, String password) throws InterruptedException {
 //empty string"" StringUtil.EMPTY_STRING
-        loginKoel(email,  password);
-        Thread.sleep(5000);
+        loginKoel("",  StringUtil.EMPTY_STRING);
+       //  Thread.sleep(3000); //todo must be implemented by waiter
+
+        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("ul[class='menu']")));
+
+       // WebElement submitButton= getDriver().findElement(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(getDriver().findElement(By.cssSelector("button[type='submit']")).isDisplayed());
 
     }

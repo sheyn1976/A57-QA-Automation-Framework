@@ -18,18 +18,18 @@ public class Homework19 extends BaseTest {
 
 
 public  void openPlaylist() {
-    WebElement emptyPlaylist = driver.findElement(By.cssSelector("//*[@class='playlist playlist']//*[text()=']"));
+    WebElement emptyPlaylist = getDriver().findElement(By.cssSelector("//*[@class='playlist playlist']//*[text()=']"));
     emptyPlaylist.click();
 }
 
     public void clickDeletePlaylistBtn() throws InterruptedException {
-WebElement deletePlaylist = driver.findElement(By.cssSelector("button[class='del btn-delete-playlist']"));
+WebElement deletePlaylist = getDriver().findElement(By.cssSelector("button[class='del btn-delete-playlist']"));
 deletePlaylist.click();
 Thread.sleep(2000);
 }
 
 public String getDeletedPlaylistMsg() {
-    WebElement notificationMsg = driver.findElement(By.cssSelector("//*[@class='dialog']//*[@class='msg']"));
+    WebElement notificationMsg = getDriver().findElement(By.cssSelector("//*[@class='dialog']//*[@class='msg']"));
 
 return notificationMsg.getText();
 

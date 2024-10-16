@@ -5,11 +5,11 @@
     <parameter name="baseURL" value="http://qa.koel.app"/>
     <test name="baseUrl" preserve-order="false">
         <classes>
-            <!--<class name="LoginTests"/>-->
+            <class name="LoginTests"/>
             <class name="BaseTest"/>
             <class name="Homework19"/>
             <!-- <class name="AddSongToPlaylist"/> -->
-            <!--<class name="RenameUserProfileTest"/>-->
+            <class name="RenameUserProfileTest"/>
         </classes>
       </test>
 </suite>
