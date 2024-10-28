@@ -20,7 +20,7 @@ public class RenameUserProfileTest extends BaseTest{
 loginKoel("ilya.sheynblat+1@testpro.io","$Ma1947va");
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
 
-        Thread.sleep(5000);
+      //  Thread.sleep(5000);
 
         WebElement avatar= getDriver().findElement(By.cssSelector("img[class='avatar']"));
         avatar.click();
