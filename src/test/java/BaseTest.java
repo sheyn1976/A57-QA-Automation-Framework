@@ -27,10 +27,11 @@ public class BaseTest {
     public void  setupDriver(String baseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options); // driver =ChromeDriver instance
 
+        driver = new ChromeDriver(options); // driver =ChromeDriver instance
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //ONE TIME
-        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
+
         driver.get(baseURL); //open our page here
         explicitWait= new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         navigateToPage();
