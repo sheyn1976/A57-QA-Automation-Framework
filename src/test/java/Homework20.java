@@ -19,7 +19,7 @@ public class Homework20 extends BaseTest {
 
 
     public  void openPlaylist() {
-        WebElement emptyPlaylist = getDriver().findElement(By.cssSelector("//*[@class='playlist playlist']//*[text()=']"));
+        WebElement emptyPlaylist = getDriver().findElement(By.xpath("//*[@class='playlist playlist']//*[text()=']"));
         emptyPlaylist.click();
     }
 
@@ -31,7 +31,7 @@ public class Homework20 extends BaseTest {
     }
 
     public String getDeletedPlaylistMsg() {
-        WebElement notificationMsg = getDriver().findElement(By.cssSelector("//*[@class='dialog']//*[@class='msg']"));
+        WebElement notificationMsg = getDriver().findElement(By.xpath("//*[@class='dialog']//*[@class='msg']"));
 
         return notificationMsg.getText();
 
