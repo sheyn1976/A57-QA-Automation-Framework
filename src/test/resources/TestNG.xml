@@ -12,6 +12,7 @@
             <class name="PlayListTest"/>
             <!-- <class name="AddSongToPlaylist"/> -->
             <class name="RenameUserProfileTest"/>
+            <class name="Homework21"/>
         </classes>
       </test>
 </suite>
