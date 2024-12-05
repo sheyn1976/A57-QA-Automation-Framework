@@ -1,20 +1,21 @@
+import org.example.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
+    LoginPage loginPage=null;
     @Test
             public void playSong() throws InterruptedException{
-    enterEmail("ilya.sheynblat+1@testpro.io");
-    enterPassword("$Ma1947va");
-    clickLoginButton();
-    clickPlay();
+        loginPage=new LoginPage(driver);
+        loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
+        clickPlay();
         Assert.assertTrue(isSongPlaying());
     }
     public void clickPlay() throws InterruptedException {
-        WebElement playNextButton = getDriver().findElement(By.cssSelector("i[data-testid='play-next-btn']"));
-        WebElement playButton = getDriver().findElement(By.cssSelector("span.play"));
+        WebElement playNextButton = driver.findElement(By.cssSelector("i[data-testid='play-next-btn']"));
+        WebElement playButton = driver.findElement(By.cssSelector("span.play"));
 
         playNextButton.click();
         Thread.sleep(2000);
@@ -23,7 +24,7 @@ public class Homework18 extends BaseTest {
     }
 
     public boolean isSongPlaying(){
-        WebElement soundBar= getDriver().findElement(By.cssSelector("div.bars"));
+        WebElement soundBar= driver.findElement(By.cssSelector("div.bars"));
         return soundBar.isDisplayed();
 
     }
