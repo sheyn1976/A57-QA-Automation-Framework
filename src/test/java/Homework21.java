@@ -1,3 +1,4 @@
+import org.example.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -8,10 +9,12 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class Homework21 extends BaseTest {
+LoginPage loginPage =null;
 
     @Test
     public void playSong() {
-        loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
+        loginPage=new LoginPage(driver);
+        loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         chooseAllSongsList();
         contextClickFirstSong();
         choosePlay();
@@ -25,7 +28,7 @@ public class Homework21 extends BaseTest {
 
     public void contextClickFirstSong() {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-        WebElement firstSong = getDriver().findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
+        WebElement firstSong = driver.findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
         actions.contextClick(firstSong).perform();
 
     }
@@ -36,27 +39,28 @@ public class Homework21 extends BaseTest {
     }
 
     public boolean isSongPlaying() {
-        WebElement soundBarVisualizer = getDriver().findElement(By.cssSelector("div[data-testid='sound-bar-play']"));
+        WebElement soundBarVisualizer =driver.findElement(By.cssSelector("div[data-testid='sound-bar-play']"));
         return soundBarVisualizer.isDisplayed();
 
     }
 
     @Test
     public void hoverOverPlayButton() {
-        loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
-        clickLoginButton();
+        loginPage=new LoginPage(driver);
+        loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         Assert.assertTrue(hoverPlay().isDisplayed());
     }
 
         public WebElement hoverPlay() {
-            WebElement play = getDriver().findElement(By.cssSelector("span .play"));
+            WebElement play = driver.findElement(By.cssSelector("span .play"));
             actions.moveToElement(play).perform();
             return explicitWait.until(ExpectedConditions.visibilityOf(play));
     }
 
         @Test
     public void listOfSongsWebElements() {
-            loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
+            loginPage=new LoginPage(driver);
+            loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
             choosePlaylistByName("Dark Days");
             displayAllSongs();
             Assert.assertEquals(displayAllSongs().size(),3);
@@ -67,13 +71,14 @@ public class Homework21 extends BaseTest {
 
     }
     public List displayAllSongs() {
-        List<WebElement> songList =getDriver().findElements(By.cssSelector("#playlistWrapper td.title"));
+        List<WebElement> songList =driver.findElements(By.cssSelector("#playlistWrapper td.title"));
         return songList;
     }
     @Test
     public void renamePlaylist(){
         String playlistName="Dark Days";
-        loginKoel("ilya.sheynblat+1@testpro.io", "$Ma1947va");
+        loginPage=new LoginPage(driver);
+        loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         doubleClickChoosePlaylist();
         enterPlaylistName(playlistName);
         String newName=getPlaylistName();
@@ -86,7 +91,7 @@ public class Homework21 extends BaseTest {
         actions.doubleClick(playlistElement).perform();
     }
     public void  enterPlaylistName(String name){
-        WebElement playlistInputField = getDriver().findElement(By.cssSelector("input[name='name']"));
+        WebElement playlistInputField = driver.findElement(By.cssSelector("input[name='name']"));
         playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT,Keys.END),name);
         playlistInputField.sendKeys(Keys.ENTER);
     }
