@@ -1,13 +1,7 @@
-import org.example.HomePage;
-import org.example.LoginPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.example.pages.HomePage;
+import org.example.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static java.sql.DriverManager.getDriver;
-import static org.bouncycastle.cms.RecipientId.password;
-
 
 
 public class LoginTest extends BaseTest {
