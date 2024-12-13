@@ -1,12 +1,11 @@
-package org.example;
+package org.example.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class PlaylistPage extends BasePage{
+public class PlaylistPage extends BasePage {
 
 
     By deleteButton = By.xpath("//button[contains(@class,'del btn-delete-playlist')]");
@@ -16,7 +15,7 @@ public class PlaylistPage extends BasePage{
    }
 
    public WebElement getDeletePlaylistButton(WebDriverWait wait){
-       return waitAndFindWebElement(wait,deleteButton);
+       return waitAndFindWebElement(deleteButton);
    }
 
 public void deletePlaylist(WebDriverWait wait){
