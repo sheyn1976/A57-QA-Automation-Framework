@@ -1,4 +1,4 @@
-import org.example.pages.LoginPage;
+import org.example.POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -18,7 +18,7 @@ public class Homework19 extends BaseTest {
         loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
         WebDriverWait wait;
         Actions actions;
-        homePage.createPlaylist(actions,wait,playListName);
+        homePage.createPlayList(actions,wait,playListName);
         homePage.openPlayList(wait,playListName) ;
 */
         loginPage=new LoginPage(driver);
