@@ -1,29 +1,22 @@
+import org.example.POM.HomePage;
+import org.example.POM.LoginPage;
+import org.example.POM.PlaylistPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+import java.util.List;
 
+import static org.example.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
 
 
 public class AddSongToPlaylist extends BaseTest{
     @Test
     public void addSongToPlaylist() {
-        /*
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-*/
 
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.sendKeys("ilya.sheynblat+1@testpro.io");
@@ -44,6 +37,50 @@ public class AddSongToPlaylist extends BaseTest{
 
 
 
+    }
+
+    public static class DeletePlayListTest extends BaseTest {
+        LoginPage loginPage=null;
+        HomePage homePage=null;
+        @Test
+        public void deletePlayLIstTest()  {
+            String playListName="TestPlayListForDeleting";
+            loginPage=new LoginPage(driver);
+            loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va" );
+            homePage=new HomePage(driver);
+
+          // homePage.createPlayList(actions, playListName);
+            homePage.openPlayList(playListName);
+            PlaylistPage playlistPage=new PlaylistPage(driver);
+            playlistPage.deletePlaylist();
+            waitUtilVisibilityOfElementLocatedBy(driver, By.xpath("//section[@id='playlists']//li/a[text()='TestPlayListForDeleting']"));
+            Assert.assertTrue(homePage.getPlaylistByName(playListName).isDisplayed());
+        }
+        @Test
+        public void addPlayListTest() throws InterruptedException{
+            String playListName="TestPlayListForDeleting";
+            loginPage=new LoginPage(driver);
+            loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va" );
+//return all finded by this locator (findElements):
+            List<WebElement> playLists =driver.findElements(By.cssSelector("#playlists li"));
+            int previousSize = playLists.size();
+            WebElement addPlayListButton= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists i[role='button']")));
+            actions.moveToElement(addPlayListButton).perform();
+            addPlayListButton.click();
+            Thread.sleep(3000);
+            WebElement createPlayListButton= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
+            createPlayListButton.click();
+
+            WebElement playlistNameInput= driver.findElement(By.cssSelector("[name=create-simple-playlist-form]>input"));
+            playlistNameInput.sendKeys(playListName);
+            playlistNameInput.sendKeys(Keys.ENTER);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'success')]")));
+            playLists =driver.findElements(By.cssSelector("#playlists li"));
+            int actualSize=playLists.size();
+            Assert.assertNotEquals(actualSize,previousSize);  // previousSize !=actualSize
+
+
+        }
     }
 }
 

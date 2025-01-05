@@ -1,4 +1,4 @@
-import org.example.pages.LoginPage;
+import org.example.POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
