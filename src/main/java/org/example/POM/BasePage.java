@@ -31,7 +31,6 @@ public abstract class BasePage {
     }
 
 
-
     public WebElement waitAndFindWebElement(By locator) {
         WebDriverWait wait = new WebDriverWait(pageDriver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)); //create and find elements. Page Method
@@ -48,7 +47,7 @@ public abstract class BasePage {
     }
 
     public void waitUntilSuccessMessageIsDisappear() {
-        WaitUtils.waitUtilInvisibilityOfElementLocatedBy(pageDriver, getSuccessMassage());
+       // WaitUtils.waitUtilInvisibilityOfElementLocatedBy(pageDriver, getSuccessMassage());
     }
 }
 
