@@ -37,7 +37,7 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         driver.get(baseURL); //open our page here
-        wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         navigateToPage();
 
@@ -52,30 +52,28 @@ public class BaseTest {
         driver.quit();
     }
     public WebDriver pickBrowser(String browser) throws MalformedURLException {
-    String gridUrl = "http://192.168.1.153:4444/";
+        String gridUrl = "http://192.168.1.153:4444/";
         ChromeOptions options = new ChromeOptions();
-        switch(browser){
+        switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
-               return driver = new ChromeDriver(options);
-
+                return driver = new ChromeDriver(options);
             case "edge":  //gradle clean test -Dbrowser=MicrosoftEdge
                 WebDriverManager.edgedriver().setup();
                 return driver = new EdgeDriver();
-            case "grid":  // driver for work with drid
+            case "grid":  // driver for work with grid
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-               capabilities.setCapability("browserName", "chrome");
-
-               return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(),capabilities);
-           default:
-               WebDriverManager.chromedriver().setup();
-               options.addArguments("--remote-allow-origins=*");
-               options.addArguments("--disable-notifications");
-               return driver = new ChromeDriver(options);
-
+                capabilities.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(), capabilities);
+                default:
+                WebDriverManager.chromedriver().setup();
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--disable-notifications");
+                return driver = new ChromeDriver(options);
         }
     }
 }
+
 
