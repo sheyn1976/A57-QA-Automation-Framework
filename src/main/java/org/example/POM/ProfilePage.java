@@ -1,16 +1,29 @@
 package org.example.POM;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ProfilePage extends BasePage{
+public class ProfilePage extends BasePage {
 
-    @FindBy(xpath = "//div[contains(@data-testid, 'theme-card')]" )
+    @FindBy(xpath = "//div[contains(@data-testid, 'theme-card')]")
     List<WebElement> themes;
+
+    @FindBy(css = "[data-testid='theme-card-violet']")
+    WebElement violetTheme;
+    @FindBy(css = "[data-testid='theme-card-violet'][class ='theme selected']")
+    WebElement selectedVioletTheme;
+
+    public boolean isVioletThemeSelected(){
+        contextClickByElement(selectedVioletTheme);
+        return isVioletThemeSelected();
+    }
+    public ProfilePage chooseVioletTheme(){
+        contextClickByElement(violetTheme);
+        return this;
+    }
 
     public ProfilePage(WebDriver existDriver){
         super(existDriver);

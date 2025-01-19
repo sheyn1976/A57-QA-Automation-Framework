@@ -29,8 +29,16 @@ public class HomePage extends BasePage {
     @FindBy(css = "#playlists li" )
     List<WebElement> playLists;
 
+    @FindBy(css= "a.view-profile")
+    WebElement profileIcon;
+
     public HomePage(WebDriver existDriver) {
         super(existDriver);
+
+    }
+    public HomePage clickProfileIcon(){
+        contextClickByElement(profileIcon);
+        return this;
 
     }
 

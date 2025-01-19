@@ -9,7 +9,7 @@ public class Homework20 extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException {
         String expectedPlaylistDeletedMassage="Delete playlist \"Dark Days\"";
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
 
         openPlaylist ();
@@ -19,7 +19,7 @@ public class Homework20 extends BaseTest {
 
 
     public  void openPlaylist() {
-        WebElement emptyPlaylist = driver.findElement(By.xpath("//*[@class='playlist playlist']//*[text()=']"));
+        WebElement emptyPlaylist = getDriver().findElement(By.xpath("//*[@class='playlist playlist']//*[text()=']"));
         emptyPlaylist.click();
     }
 
@@ -31,7 +31,7 @@ public class Homework20 extends BaseTest {
     }
 
     public String getDeletedPlaylistMsg() {
-        WebElement notificationMsg = driver.findElement(By.xpath("//*[@class='dialog']//*[@class='msg']"));
+        WebElement notificationMsg =getDriver().findElement(By.xpath("//*[@class='dialog']//*[@class='msg']"));
 
         return notificationMsg.getText();
 

@@ -13,7 +13,7 @@ public class PlaySongByActionTest extends BaseTest {
 
     @Test
     public void playSongByContextClick() {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
 
         String songLocator = "//section[@id='songsWrapper']//td[text()='%s']"; //'%s' can add any name of songs
@@ -26,14 +26,14 @@ public class PlaySongByActionTest extends BaseTest {
         actions.contextClick(song).perform();
         WebElement playButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='song-context-menu'] .playback")));
         playButton.click();
-        WebElement soundBar = driver.findElement(By.cssSelector("[data-test='soundbars']"));
+        WebElement soundBar = getDriver().findElement(By.cssSelector("[data-test='soundbars']"));
         Assert.assertTrue(soundBar.isDisplayed());
 
     }
 
     @Test
     public void playSongByHoverMouseTest() {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         WebElement allSongsMenuItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='sidebar'] .songs")));
         allSongsMenuItem.click();
@@ -42,7 +42,7 @@ public class PlaySongByActionTest extends BaseTest {
         actions.moveToElement(mediaPlayer).click().perform();
         WebElement playButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#mainFooter .play i")));
         playButton.click();
-        WebElement soundBar = driver.findElement(By.cssSelector("[data-test='soundbars']"));
+        WebElement soundBar = getDriver().findElement(By.cssSelector("[data-test='soundbars']"));
         Assert.assertTrue(soundBar.isDisplayed());
     }
 }
