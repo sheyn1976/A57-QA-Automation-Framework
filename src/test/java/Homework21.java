@@ -13,7 +13,7 @@ LoginPage loginPage =null;
 
     @Test
     public void playSong() {
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         chooseAllSongsList();
         contextClickFirstSong();
@@ -28,7 +28,7 @@ LoginPage loginPage =null;
 
     public void contextClickFirstSong() {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-        WebElement firstSong = driver.findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
+        WebElement firstSong = getDriver().findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
         actions.contextClick(firstSong).perform();
 
     }
@@ -39,27 +39,27 @@ LoginPage loginPage =null;
     }
 
     public boolean isSongPlaying() {
-        WebElement soundBarVisualizer =driver.findElement(By.cssSelector("div[data-testid='sound-bar-play']"));
+        WebElement soundBarVisualizer =getDriver().findElement(By.cssSelector("div[data-testid='sound-bar-play']"));
         return soundBarVisualizer.isDisplayed();
 
     }
 
     @Test
     public void hoverOverPlayButton() {
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         Assert.assertTrue(hoverPlay().isDisplayed());
     }
 
         public WebElement hoverPlay() {
-            WebElement play = driver.findElement(By.cssSelector("span .play"));
+            WebElement play = getDriver().findElement(By.cssSelector("span .play"));
             actions.moveToElement(play).perform();
             return explicitWait.until(ExpectedConditions.visibilityOf(play));
     }
 
         @Test
     public void listOfSongsWebElements() {
-            loginPage=new LoginPage(driver);
+            loginPage=new LoginPage(getDriver());
             loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
             choosePlaylistByName("Dark Days");
             displayAllSongs();
@@ -71,13 +71,13 @@ LoginPage loginPage =null;
 
     }
     public List displayAllSongs() {
-        List<WebElement> songList =driver.findElements(By.cssSelector("#playlistWrapper td.title"));
+        List<WebElement> songList =getDriver().findElements(By.cssSelector("#playlistWrapper td.title"));
         return songList;
     }
     @Test
     public void renamePlaylist(){
         String playlistName="Dark Days";
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
         doubleClickChoosePlaylist();
         enterPlaylistName(playlistName);
@@ -91,7 +91,7 @@ LoginPage loginPage =null;
         actions.doubleClick(playlistElement).perform();
     }
     public void  enterPlaylistName(String name){
-        WebElement playlistInputField = driver.findElement(By.cssSelector("input[name='name']"));
+        WebElement playlistInputField = getDriver().findElement(By.cssSelector("input[name='name']"));
         playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT,Keys.END),name);
         playlistInputField.sendKeys(Keys.ENTER);
     }

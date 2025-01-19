@@ -15,10 +15,11 @@ import org.testng.annotations.Parameters;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Duration;
+import java.util.HashMap;
 
 public class BaseTest {
 
-    protected WebDriver driver = null;
+    private WebDriver driver = null;
 
     protected String url = "https://qa.koel.app/";
 
@@ -28,32 +29,42 @@ public class BaseTest {
 
     protected Actions actions = null;
 
+    private static final ThreadLocal<WebDriver> threadlocal = new ThreadLocal<>();
+//final mean we cant change the constant
+    //private we can see the constant only here
+   // static mean the constant initialize im moment of compilation of code
+
     @BeforeMethod
     @Parameters({"baseURL"})
     public void setUpDriver(String baseURL) throws MalformedURLException {
-
         driver = pickBrowser(System.getProperty("browser"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //ONE TIME
-        driver.manage().window().maximize();
+        threadlocal.set(driver);
 
-        driver.get(baseURL); //open our page here
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        actions = new Actions(driver);
+        threadlocal.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //ONE TIME
+        getDriver().manage().window().maximize();
+
+        threadlocal.get().get(baseURL); //open our page here
+        wait = new WebDriverWait(threadlocal.get(), Duration.ofSeconds(10));
+        actions = new Actions(threadlocal.get());
         navigateToPage();
-
     }
 
+    public WebDriver getDriver(){
+        return threadlocal.get();
+    }
     public void navigateToPage() {
         driver.get(url);
     }
 
     @AfterMethod
     public void closerBrowser() {
-        driver.quit();
+        getDriver().quit();
     }
     public WebDriver pickBrowser(String browser) throws MalformedURLException {
         String gridUrl = "http://192.168.1.153:4444/";
         ChromeOptions options = new ChromeOptions();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -64,16 +75,35 @@ public class BaseTest {
                 WebDriverManager.edgedriver().setup();
                 return driver = new EdgeDriver();
             case "grid":  // driver for work with grid
-                DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(), capabilities);
-                default:
+
+            case "Lambda":
+                String hub = "@hub.lambdatest.com/wd/hub";
+                String userName = "ilyasheynblat";
+                String accessKey ="eXU3xKRCAatI440tm894IndTfFjhFB0gjKeUmpQ4Ry9MbiVHb1";
+
+                capabilities.setCapability("browserName","Chrome");
+                capabilities.setCapability("browserVersion","131.0");
+                HashMap<String, Object> ltOptions = new HashMap<>();
+                ltOptions.put("username", userName);
+                ltOptions.put("accessKey", accessKey);
+                ltOptions.put("platformName", "Windows 11");
+                ltOptions.put("project", "Koel");
+                capabilities.setCapability("LT:Options", ltOptions);
+                return driver = new RemoteWebDriver(URI.create("https://" + userName + ":" + accessKey + hub).toURL(), capabilities);
+
+            default:
                 WebDriverManager.chromedriver().setup();
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--disable-notifications");
                 return driver = new ChromeDriver(options);
         }
     }
-}
+
+    }
+
+
+
 
 

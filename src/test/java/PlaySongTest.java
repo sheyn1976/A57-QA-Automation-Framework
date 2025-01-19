@@ -11,15 +11,15 @@ public class PlaySongTest extends BaseTest  {
     @Test
     public void playSongTest() {
 
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
-        WebElement favoritesPlayListLink= driver.findElement(By.xpath("//li[contains(@class,'favorites')]/a"));
+        WebElement favoritesPlayListLink= getDriver().findElement(By.xpath("//li[contains(@class,'favorites')]/a"));
         favoritesPlayListLink.click();
         WebElement song= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='favoritesWrapper']//td[text()='Riqui-Riqui']")));
         actions.doubleClick(song).perform();
        // song.click();
         // song.sendKeys(Keys.ENTER);
-WebElement soundBar = driver.findElement(By.cssSelector("[data-test='soundbars']"));
+WebElement soundBar = getDriver().findElement(By.cssSelector("[data-test='soundbars']"));
         Assert.assertTrue(soundBar.isDisplayed());
 
     }

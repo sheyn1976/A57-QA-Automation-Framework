@@ -21,7 +21,7 @@ public class PlayListTest extends BaseTest {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']")));
         createPlayList(playListName);
    //     explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(playListLocatorByName, playListName))));//format let us use %s
-        List<WebElement> playLists = driver.findElements(By.xpath("//li[contains(@class,'playlist')]"));
+        List<WebElement> playLists =getDriver().findElements(By.xpath("//li[contains(@class,'playlist')]"));
         deletePlayListByName(playLists, playListName);
       //  List<WebElement> playLists= getDriver().findElements(By.xpath("//li[contains(@class,'playlist')]"));
 Assert.assertFalse(playLists.contains(playListName));
@@ -29,14 +29,14 @@ Assert.assertFalse(playLists.contains(playListName));
 
 
     public void createPlayList(String playlistName){
-WebElement createButton= driver.findElement(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']"));
+WebElement createButton= getDriver().findElement(By.cssSelector("i[data-testid='sidebar-create-playlist-btn']"));
 
         createButton.click();
 explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li[ data-testid='playlist-context-menu-create-simple']")));
-WebElement createNewPlayListButton= driver.findElement(By.cssSelector("li[ data-testid='playlist-context-menu-create-simple']"));
+WebElement createNewPlayListButton= getDriver().findElement(By.cssSelector("li[ data-testid='playlist-context-menu-create-simple']"));
         createNewPlayListButton.click();
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("form[name='create-simple-playlist-form']>input")));
-        WebElement createNewPlayListInputField= driver.findElement(By.cssSelector("form[name='create-simple-playlist-form']>input"));
+        WebElement createNewPlayListInputField=getDriver().findElement(By.cssSelector("form[name='create-simple-playlist-form']>input"));
         createNewPlayListInputField.sendKeys(playlistName);
         createNewPlayListInputField.sendKeys(Keys.ENTER);
       // actions.contextClick(createButton).moveToElement(createNewPlayListButton).build().perform();
@@ -53,7 +53,7 @@ public void deletePlayListByName(List<WebElement> playLists, String playListName
     for(WebElement item: playLists) {
         if (item.getText().equals(playListName)) {
             actions.contextClick(item).perform();
-            WebElement deletePlayListButton = driver.findElement(By.cssSelector("li[data-testid='playlist-context-menu-delete-100493']"));
+            WebElement deletePlayListButton = getDriver().findElement(By.cssSelector("li[data-testid='playlist-context-menu-delete-100493']"));
             deletePlayListButton.click();
 
         }

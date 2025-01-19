@@ -16,16 +16,16 @@ public class RenamePlayListTest extends BaseTest {
 
     @Test
     public void renamePlayListTest() throws InterruptedException {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
-        homePage = new HomePage(driver);
+        homePage = new HomePage(getDriver());
         homePage.renamePlayList(currentPlayListName, newPlayListName);
 
         Assert.assertEquals(newPlayListName, homePage.getPlayListByName(newPlayListName).getText());
     }
     @AfterMethod
     public void rollBackChanges() throws InterruptedException{
-        homePage=new HomePage(driver);
+        homePage=new HomePage(getDriver());
         homePage.renamePlayList(newPlayListName, currentPlayListName);
     }
 

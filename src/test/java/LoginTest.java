@@ -12,21 +12,19 @@ public class LoginTest extends BaseTest {
 
     @Test(testName = "Login with correct credentials test", groups = {"Smoke", "Regression"})
     public void loginTest() {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
           loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
-         homePage = new HomePage(driver);
-        Assert.assertFalse(homePage.getAvatar().isDisplayed());
+         HomePage homePage = new HomePage(getDriver());
+        Assert.assertTrue(homePage.getAvatar().isDisplayed());
     }
 
 
 
     @Test(dataProviderClass = ParameterProvider.class, dataProvider = "incorrectCredentialValues", groups = "Regression")
-        public void loginIncorrectEmailPasswordTest(String email, String password){
-            loginPage = new LoginPage(driver);
+    public void loginIncorrectEmailPasswordTest(String email, String password){
+            loginPage = new LoginPage(getDriver());
             loginPage.login(email, password);
-            homePage = new HomePage(driver);
-//loginPage.waitUntilInvisibleOfElement(homePage.getHomeMenu(), 5) ;
-// WebElement logo = driver.findElement(By.cssSelector(".logo"));
+         // HomePage homePage = new HomePage(getDriver());
         Assert.assertTrue(loginPage.getLogo().isDisplayed());
     }
     }

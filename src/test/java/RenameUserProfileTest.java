@@ -13,19 +13,19 @@ public class RenameUserProfileTest extends BaseTest{
 
     public void renameUserProfileTest() {
         String newName= UUID.randomUUID().toString();
-        loginPage=new LoginPage(driver);
+        loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
-        WebElement avatar= driver.findElement(By.cssSelector("img[class='avatar']"));
+        WebElement avatar=getDriver().findElement(By.cssSelector("img[class='avatar']"));
         avatar.click();
 
-        WebElement currentPasswordField= driver.findElement(By.cssSelector("input[id='inputProfileCurrentPassword']"));
+        WebElement currentPasswordField= getDriver().findElement(By.cssSelector("input[id='inputProfileCurrentPassword']"));
         currentPasswordField.sendKeys("$Ma1947va");
 
-        WebElement profileNameField= driver.findElement(By.cssSelector("input[id='inputProfileName']"));
+        WebElement profileNameField=getDriver().findElement(By.cssSelector("input[id='inputProfileName']"));
         profileNameField.clear();
         profileNameField.sendKeys(newName);
-        WebElement submitButton= driver.findElement(By.cssSelector(".btn-submit"));
+        WebElement submitButton= getDriver().findElement(By.cssSelector(".btn-submit"));
         submitButton.click();
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'success')]")));
 
