@@ -3,7 +3,7 @@ import org.testng.annotations.DataProvider;
 import java.util.UUID;
 
 
-public class ParameterProvider {
+public class DataProviderCredentials {
 
     @DataProvider(name = "incorrectCredentialValues")
     public Object[][] provideIncorrectCredentials() {

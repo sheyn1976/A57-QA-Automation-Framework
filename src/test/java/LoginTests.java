@@ -4,13 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class LoginTest extends BaseTest {
+public class LoginTests extends BaseTest {
 
     LoginPage loginPage = null;
-    HomePage homePage = null;
 
-
-    @Test(testName = "Login with correct credentials test", groups = {"Smoke", "Regression"})
+    @Test(description = "Login with correct credentials test", priority = 1, groups = "Smoke")
     public void loginTest() {
         loginPage = new LoginPage(getDriver());
           loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
@@ -20,7 +18,7 @@ public class LoginTest extends BaseTest {
 
 
 
-    @Test(dataProviderClass = ParameterProvider.class, dataProvider = "incorrectCredentialValues", groups = "Regression")
+    @Test(groups = "Regression", dataProvider = "incorrectCredentials", dataProviderClass = DataProviderCredentials.class)
     public void loginIncorrectEmailPasswordTest(String email, String password){
             loginPage = new LoginPage(getDriver());
             loginPage.login(email, password);

@@ -39,10 +39,8 @@ public class BaseTest {
     public void setUpDriver(String baseURL) throws MalformedURLException {
         driver = pickBrowser(System.getProperty("browser"));
         threadlocal.set(driver);
-
         threadlocal.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //ONE TIME
         getDriver().manage().window().maximize();
-
         threadlocal.get().get(baseURL); //open our page here
         wait = new WebDriverWait(threadlocal.get(), Duration.ofSeconds(10));
         actions = new Actions(threadlocal.get());
@@ -78,10 +76,10 @@ public class BaseTest {
                 capabilities.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(), capabilities);
 
-            case "Lambda":
+            case "lambda":
                 String hub = "@hub.lambdatest.com/wd/hub";
                 String userName = "ilyasheynblat";
-                String accessKey ="eXU3xKRCAatI440tm894IndTfFjhFB0gjKeUmpQ4Ry9MbiVHb1";
+                String accessKey ="eXU3xKRCAatI440tm894IndTfFjhFB0gjKeUmpQ4Ry9MbiVHb1"; //api key = access key
 
                 capabilities.setCapability("browserName","Chrome");
                 capabilities.setCapability("browserVersion","131.0");
