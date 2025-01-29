@@ -1,6 +1,6 @@
-import org.example.POM.HomePage;
-import org.example.POM.LoginPage;
-import org.example.POM.ProfilePage;
+import stepDefinitions.POM.HomePage;
+import stepDefinitions.POM.LoginPage;
+import stepDefinitions.POM.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

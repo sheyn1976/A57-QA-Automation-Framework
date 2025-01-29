@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.example.POM.LoginPage;
+import stepDefinitions.POM.LoginPage;
 
 public class PlaySongTest extends BaseTest  {
     LoginPage loginPage=null;

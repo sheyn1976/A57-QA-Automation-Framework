@@ -1,5 +1,5 @@
-import org.example.POM.HomePage;
-import org.example.POM.LoginPage;
+import stepDefinitions.POM.HomePage;
+import stepDefinitions.POM.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
