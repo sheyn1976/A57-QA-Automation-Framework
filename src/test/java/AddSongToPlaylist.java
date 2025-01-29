@@ -1,6 +1,6 @@
-import org.example.POM.HomePage;
-import org.example.POM.LoginPage;
-import org.example.POM.PlaylistPage;
+import stepDefinitions.POM.HomePage;
+import stepDefinitions.POM.LoginPage;
+import stepDefinitions.POM.PlaylistPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.example.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
+import static stepDefinitions.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
 
 
 public class AddSongToPlaylist extends BaseTest{

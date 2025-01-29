@@ -1,4 +1,4 @@
-package org.example.POM;
+package stepDefinitions.POM;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
