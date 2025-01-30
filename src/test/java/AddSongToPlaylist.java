@@ -1,6 +1,6 @@
-import stepDefinitions.POM.HomePage;
-import stepDefinitions.POM.LoginPage;
-import stepDefinitions.POM.PlaylistPage;
+import POM.HomePage;
+import POM.LoginPage;
+import POM.PlaylistPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -8,9 +8,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
+
 import java.util.List;
 
-import static stepDefinitions.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
+import static POM.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
+import static org.bouncycastle.oer.its.ieee1609dot2.SubjectPermissions.all;
 
 
 public class AddSongToPlaylist extends BaseTest{

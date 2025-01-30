@@ -1,4 +1,4 @@
-package stepDefinitions.POM;
+package POM;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,15 +26,15 @@ public class LoginPage extends BasePage {
         provideEmail(email).providePassword(password).clickSubmit();
 
     }
-    private LoginPage provideEmail(String email){
+    public LoginPage provideEmail(String email){
         emailInput.sendKeys(email);
         return this;
     }
-    private LoginPage providePassword(String password){
+    public LoginPage providePassword(String password){
         passwordInput.sendKeys(password);
         return this;
     }
-private LoginPage clickSubmit(){
+public LoginPage clickSubmit(){
     loginButton.click();
 return this;
 

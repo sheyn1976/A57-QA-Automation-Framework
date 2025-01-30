@@ -5,21 +5,22 @@
     <parameter name="baseURL" value="http://qa.koel.app"/>
     <test name="baseUrl" preserve-order="false">
         <classes>
-            <class name="LoginTest"/>
-            <class name="BaseTest"/>
-            <class name="Homework19"/>
-            <class name="Homework20"/>
-            <class name="Homework21"/>
-            <!--class name="Homework22"/-->
-            <class name="PlayListTest"/>
-            <class name="AddSongToPlaylist"/>
-            <class name="RenameUserProfileTest"/>
-          <!--  <class name="Homework21"/>-->
-            <class name="DeletePlayListTest"/>
-            <class name="PlaySongByActionTest"/>
-            <class name="RenamePlayListTest"/>
-            <class name="PlaySongTest"/>
-            <class name="ThemeTest"/>
-        </classes>
-      </test>
-</suite>
+       <!--     <class name="LoginTests"/>
+                      <class name="BaseTest"/>
+                      <class name="Homework19"/>
+                      <class name="Homework20"/>
+                      <class name="Homework21"/>
+                      <class name="Homework22"/>
+                       <class name="PlayListTest"/>
+                       <class name="AddSongToPlaylist"/>
+                       <class name="RenameUserProfileTest"/>
+                       <class name="Homework21"/>
+                    <class name="DeletePlayListTest"/>
+                   <class name="PlaySongByActionTest"/>
+                   <class name="RenamePlayListTest"/> -->
+                   <class name="PlaySongTest"/>
+                   <class name="ThemeTest"/>  -->
+                   <class name="CucumberRunner"/>
+               </classes>
+             </test>
+       </suite>
