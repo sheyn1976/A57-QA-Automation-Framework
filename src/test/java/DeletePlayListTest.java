@@ -1,13 +1,16 @@
-import stepDefinitions.POM.HomePage;
-import stepDefinitions.POM.PlaylistPage;
+
+import POM.HomePage;
+import POM.LoginPage;
+import POM.PlaylistPage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import stepDefinitions.POM.LoginPage;
 import org.openqa.selenium.interactions.Actions;
 
 
-import static stepDefinitions.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
+
+
+import static POM.WaitUtils.waitUtilVisibilityOfElementLocatedBy;
 
 
 public class DeletePlayListTest extends BaseTest{

@@ -1,6 +1,6 @@
-import stepDefinitions.POM.HomePage;
-import stepDefinitions.POM.LoginPage;
-import stepDefinitions.POM.ProfilePage;
+import POM.HomePage;
+import POM.LoginPage;
+import POM.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,7 +19,7 @@ public class ThemeTest extends BaseTest {
     }
 
     @Test
-    public void changeCurrentTheme(){
+    public  void changeCurrentTheme(){
         LoginPage loginPage= new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         ProfilePage profilePage=new ProfilePage(getDriver());

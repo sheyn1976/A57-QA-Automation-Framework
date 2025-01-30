@@ -1,8 +1,11 @@
-import stepDefinitions.POM.LoginPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import POM.LoginPage;
+
+import POM.LoginPage;
 
 public class Homework19 extends BaseTest {
     @Test

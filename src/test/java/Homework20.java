@@ -1,4 +1,4 @@
-import stepDefinitions.POM.LoginPage;
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -9,7 +9,8 @@ public class Homework20 extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException {
         String expectedPlaylistDeletedMassage="Delete playlist \"Dark Days\"";
-        loginPage=new LoginPage(getDriver());
+     //   loginPage=new LoginPage(getDriver());
+        LoginPage loginPage= new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
 
         openPlaylist ();
