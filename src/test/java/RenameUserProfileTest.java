@@ -1,9 +1,13 @@
-import stepDefinitions.POM.LoginPage;
+import POM.LoginPage;
+import POM.HomePage;
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import POM.HomePage;
+import POM.LoginPage;
 
 import java.util.UUID;
 
@@ -13,7 +17,7 @@ public class RenameUserProfileTest extends BaseTest{
 
     public void renameUserProfileTest() {
         String newName= UUID.randomUUID().toString();
-        loginPage=new LoginPage(getDriver());
+        LoginPage loginPage=new LoginPage(getDriver());
         loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
         WebElement avatar=getDriver().findElement(By.cssSelector("img[class='avatar']"));

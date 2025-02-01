@@ -43,5 +43,6 @@ return this;
     public WebElement getLogo() {
         return logo;
     }
-    }
+}
+
 

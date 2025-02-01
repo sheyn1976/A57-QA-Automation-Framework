@@ -1,8 +1,7 @@
-import stepDefinitions.POM.HomePage;
-import stepDefinitions.POM.LoginPage;
+import POM.HomePage;
+import POM.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 public class LoginTests extends BaseTest {
 
@@ -23,7 +22,7 @@ public class LoginTests extends BaseTest {
             loginPage = new LoginPage(getDriver());
             loginPage.login(email, password);
          // HomePage homePage = new HomePage(getDriver());
-        Assert.assertTrue(loginPage.getLogo().isDisplayed());
+        Assert.assertFalse(loginPage.getLogo().isDisplayed());
     }
     }
 

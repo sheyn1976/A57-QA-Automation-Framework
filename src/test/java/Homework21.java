@@ -1,4 +1,4 @@
-import stepDefinitions.POM.LoginPage;
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Homework21 extends BaseTest {
 LoginPage loginPage =null;
-
     @Test
     public void playSong() {
         loginPage=new LoginPage(getDriver());

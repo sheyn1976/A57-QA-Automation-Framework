@@ -1,5 +1,5 @@
 package stepDefinitions;
-
+import POM.LoginPage;
 import POM.HomePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,6 +17,9 @@ import java.time.Duration;
 
 import org.testng.Assert;
 import POM.LoginPage;
+
+import static java.sql.DriverManager.getDriver;
+import static org.bouncycastle.cms.RecipientId.password;
 
 public class LoginStepDefinitions {
    WebDriver driver;
@@ -74,4 +77,19 @@ public class LoginStepDefinitions {
    public void iCloseBrowser() {
       driver.quit();
    }
+
+    @And("enter incorrect password {string}")
+    public void enterIncorrectPassword(String arg0) {
+        driver.findElement(By.cssSelector("input[type='password']")).sendKeys(arg0);
+    }
+
+    @Then("I am  not logged in")
+    public void iAmNotLoggedIn() {
+
+        LoginPage   loginPage = new LoginPage(driver);
+        loginPage.providePassword("i@testpro.io");
+
+
+                Assert.assertFalse(loginPage.getLogo().isDisplayed());
+    }
 }
