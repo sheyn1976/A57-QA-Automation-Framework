@@ -9,3 +9,11 @@ Feature:Login Tests
     Then I am logged in
 
 
+Feature: Login tests
+  Scenario : Login incorrect password
+
+    Given I open login page
+    When I enter email "ilya.sheynblat+1@testpro.io"
+    And  enter incorrect password "i@testpro.io"
+    And enter submit
+    Then I am  not logged in

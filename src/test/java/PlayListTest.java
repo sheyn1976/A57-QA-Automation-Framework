@@ -1,4 +1,5 @@
-import stepDefinitions.POM.LoginPage;
+import POM.HomePage;
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
