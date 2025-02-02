@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Homework21 extends BaseTest {
+public class PlaySongTest21 extends BaseTest {
 LoginPage loginPage =null;
     @Test
     public void playSong() {
