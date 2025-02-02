@@ -7,20 +7,20 @@
         <classes>
            <class name="LoginTests"/>
             <class name="BaseTest"/>
-                      <class name="Homework19"/>
-                      <class name="Homework20"/>
-                      <class name="Homework21"/>
+                      <class name="PlaySongTest"/>
+                      <class name="DeletePlaylistTest20"/>
                    <!--    <class name="Homework22"/> -->
                        <class name="PlayListTest"/>
                        <class name="AddSongToPlaylist"/>
                        <class name="RenameUserProfileTest"/>
-                       <class name="Homework21"/>
+                       <class name="PlaySongTest21"/>
                     <class name="DeletePlayListTest"/>
                    <class name="PlaySongByActionTest"/>
-                   <class name="RenamePlayListTest"/> -->
+                   <class name="RenamePlayListTest"/>
                    <class name="PlaySongTest"/>
-                   <class name="ThemeTest"/>  -->
+                   <class name="ThemeTest"/>
                    <class name="CucumberRunner"/>
+            <class name="DeletePlaylistTest1"/>
                </classes>
              </test>
        </suite>

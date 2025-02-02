@@ -5,9 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import POM.LoginPage;
 
-import POM.LoginPage;
-
-public class Homework19 extends BaseTest {
+public class DeletePlaylistTest1 extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException {
         String expectedPlaylistDeletedMassage="Delete playlist \"Dark Days\"";

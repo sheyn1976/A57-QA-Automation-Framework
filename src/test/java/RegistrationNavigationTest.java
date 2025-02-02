@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 
-public class Homework16 extends BaseTest {
+public class RegistrationNavigationTest extends BaseTest {
     @Test
     public void registrationNavigation(){
         ChromeOptions options = new ChromeOptions();

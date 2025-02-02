@@ -1,27 +1,33 @@
+
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import POM.HomePage;
-import POM.LoginPage;
 
-public class PlaySongTest extends BaseTest  {
+public class PlaySongTest extends BaseTest {
     LoginPage loginPage=null;
-
     @Test
-    public void playSongTest() {
-
+            public void playSong() throws InterruptedException{
         loginPage=new LoginPage(getDriver());
-        loginPage.login("ilya.sheynblat+1@testpro.io", "$Ma1947va");
-        WebElement favoritesPlayListLink= getDriver().findElement(By.xpath("//li[contains(@class,'favorites')]/a"));
-        favoritesPlayListLink.click();
-        WebElement song= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='favoritesWrapper']//td[text()='Riqui-Riqui']")));
-        actions.doubleClick(song).perform();
-       // song.click();
-        // song.sendKeys(Keys.ENTER);
-WebElement soundBar = getDriver().findElement(By.cssSelector("[data-test='soundbars']"));
-        Assert.assertTrue(soundBar.isDisplayed());
+        loginPage.login("ilya.sheynblat+1@testpro.io","$Ma1947va");
+        clickPlay();
+        Assert.assertTrue(isSongPlaying());
+    }
+    public void clickPlay() throws InterruptedException {
+        WebElement playNextButton = getDriver().findElement(By.cssSelector("i[data-testid='play-next-btn']"));
+        WebElement playButton = getDriver().findElement(By.cssSelector("span.play"));
+
+        playNextButton.click();
+        Thread.sleep(2000);
+        playButton.click();
+        Thread.sleep(2000);
+    }
+
+    public boolean isSongPlaying(){
+        WebElement soundBar=getDriver().findElement(By.cssSelector("div.bars"));
+        return soundBar.isDisplayed();
 
     }
+
 }
